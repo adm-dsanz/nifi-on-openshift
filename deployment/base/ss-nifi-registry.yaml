@@ -64,4 +64,4 @@ spec:
         storageClassName: $(storage_class)
         resources:
           requests:
-            storage: "1Gi"
+            storage: "5Gi"
