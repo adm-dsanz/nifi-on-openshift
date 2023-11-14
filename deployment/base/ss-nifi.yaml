@@ -8,7 +8,7 @@ metadata:
 spec:
   podManagementPolicy: Parallel
   serviceName: nifi-headless
-  replicas: 3
+  replicas: 5
   selector:
     matchLabels:
       app: nifi
@@ -316,11 +316,11 @@ spec:
               exec bin/nifi.sh run
           resources:
             limits:
-              cpu: 3500m
-              memory: 6Gi
+              cpu: 5500m
+              memory: 8Gi
             requests:
-              cpu: '2'
-              memory: 2Gi
+              cpu: '4'
+              memory: 6Gi
           ports:
             - containerPort: 9092
               name: metrics
@@ -500,7 +500,7 @@ spec:
         storageClassName: $(storage_class)
         resources:
           requests:
-            storage: 100Mi
+            storage: 1Gi
     - metadata:
         name: data
       spec:
@@ -518,7 +518,7 @@ spec:
         storageClassName: $(storage_class)
         resources:
           requests:
-            storage: 10Gi
+            storage: 30Gi
     - metadata:
         name: content-repository
       spec:
@@ -527,7 +527,7 @@ spec:
         storageClassName: $(storage_class)
         resources:
           requests:
-            storage: 10Gi
+            storage: 50Gi
     - metadata:
         name: provenance-repository
       spec:
@@ -536,7 +536,7 @@ spec:
         storageClassName: $(storage_class)
         resources:
           requests:
-            storage: 10Gi
+            storage: 12Gi
     - metadata:
         name: logs
       spec:
@@ -545,7 +545,7 @@ spec:
         storageClassName: $(storage_class)
         resources:
           requests:
-            storage: 5Gi
+            storage: 10Gi
     - metadata:
         name: extensions
       spec:
@@ -563,4 +563,4 @@ spec:
         storageClassName: $(storage_class)
         resources:
           requests:
-            storage: 100Mi
+            storage: 1Gi
