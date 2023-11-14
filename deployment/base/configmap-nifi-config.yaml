@@ -199,8 +199,8 @@ data:
     java.arg.1=-Dorg.apache.jasper.compiler.disablejsr199=true
 
     # JVM memory settings
-    java.arg.2=-Xms2g
-    java.arg.3=-Xmx2g
+    java.arg.2=-Xms4096m
+    java.arg.3=-Xmx4096m
 
     # Enable Remote Debugging
     #java.arg.debug=-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=8000
@@ -342,7 +342,7 @@ data:
     nifi.flowfile.repository.wal.implementation=org.apache.nifi.wali.SequentialAccessWriteAheadLog
     nifi.flowfile.repository.directory=../flowfile_repository
     nifi.flowfile.repository.partitions=256
-    nifi.flowfile.repository.checkpoint.interval=2 mins
+    nifi.flowfile.repository.checkpoint.interval=20 secs
     nifi.flowfile.repository.always.sync=false
     nifi.flowfile.repository.encryption.key.provider.implementation=
     nifi.flowfile.repository.encryption.key.provider.location=
@@ -360,10 +360,10 @@ data:
 
     # Content Repository
     nifi.content.repository.implementation=org.apache.nifi.controller.repository.FileSystemRepository
-    nifi.content.claim.max.appendable.size=1 MB
-    nifi.content.claim.max.flow.files=100
+    nifi.content.claim.max.appendable.size=5 MB
+    nifi.content.claim.max.flow.files=50
     nifi.content.repository.directory.default=../content_repository
-    nifi.content.repository.archive.max.retention.period=3 days
+    nifi.content.repository.archive.max.retention.period=2 hours
     nifi.content.repository.archive.max.usage.percentage=85%
     nifi.content.repository.archive.enabled=true
     nifi.content.repository.always.sync=false
@@ -384,8 +384,8 @@ data:
 
     # Persistent Provenance Repository Properties
     nifi.provenance.repository.directory.default=../provenance_repository
-    nifi.provenance.repository.max.storage.time=10 days
-    nifi.provenance.repository.max.storage.size=8 GB
+    nifi.provenance.repository.max.storage.time=2 days
+    nifi.provenance.repository.max.storage.size=10 GB
     nifi.provenance.repository.rollover.time=30 secs
     nifi.provenance.repository.rollover.size=100 MB
     nifi.provenance.repository.query.threads=2
@@ -459,6 +459,7 @@ data:
     proxiedEntity=$(admin_identity)
     nifi.security.user.authorizer=managed-authorizer
     nifi.security.needClientAuth=true
+    nifi.security.allow.anonymous.authentication=true
 
 
     nifi.security.user.login.identity.provider=single-user-provider
